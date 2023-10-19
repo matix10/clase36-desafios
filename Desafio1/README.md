@@ -36,3 +36,10 @@
 4. Una vez que la imagen esta creada procedemos a probar la misma. Para ello ejecutamos docker run -p 5000:5000 "imagen"
 
 ![Alt text](image-1.png)
+
+5. Ejecutamos el pipeline en actions
+
+![Alt text](image-2.png)
+
+6. Imagen pusheada a actions con el versionado solicitado
+![Alt text](image-3.png)
