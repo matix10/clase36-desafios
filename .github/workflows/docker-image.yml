@@ -5,7 +5,7 @@ on:
     pull_request:
         branches: ["main"]
 
-        
+
 jobs:
     build-and-push:
         runs-on: ubuntu-latest
@@ -24,19 +24,16 @@ jobs:
 
         
 
-        - name: docker up
-          uses: actions/checkout@v2
+        - name: Build and push
+          uses: docker/build-push-action@v2
           with:
             context: ${{ github.workspace }}/Desafio1/
-            run: docker-compose up -d
-
-        - name: docker build
-          working-directory: ./Desafio1
-          run: docker-compose build image
-          
-
-        - name: push the image to docker
-          run: docker push matiasolivar/flask:v1.0 
-
+            file: ${{ github.workspace }}/Desafio1/Dockerfile
+            # Asume que tu Dockerfile está en la raíz de tu repositorio
+            # Si tu Dockerfile está en una ruta específica, por ejemplo, ./path/to/Dockerfile, cambia 'context' y 'file' como sigue:
+            # context: ./path/to/
+            # file: ./path/to/Dockerfile
+            push: true
+            tags: matiasolivar/flask:v1.0 # Cambia esto con tu nombre de usuario y nombre de imagen
 
      
