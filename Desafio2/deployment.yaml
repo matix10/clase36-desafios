@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: deployment
+metadata:
+  name: app
+  labels:
+    app: app-py
+spec:
+  replicas: 3
+  selector:
+    matchLabels: app-py
+  template:
+    metadata:
+      labels:
+        app: app-py
+    spec:
+      containers:
+      - name: app-py
+        image:
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: app-py
+            mountPath: /var/app-py
+      volumes:
+        persistenVolueClaim:
+          claimName: app-pv
+      
+
+
+
