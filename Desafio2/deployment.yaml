@@ -17,9 +17,9 @@ spec:
     spec:
       containers:
         - name: app-py
-          image: matiasolivar/flask:v1.0
+          image: matiasolivar/desafio2-flask:v1.0
           ports:
-          - containerPort: 80
+          - containerPort: 5000
           volumeMounts:
             - name: app-py
               mountPath: /var/app-py
