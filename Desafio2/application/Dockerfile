@@ -1,7 +1,15 @@
-FROM python:3
-RUN apt-get update
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+FROM python:3.9
+
 COPY . .
-EXPOSE 80
-CMD ["python","app.py"]
+
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+EXPOSE 5000
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
+ENV FLASK_APP=app.py
+CMD ["flask", "run", "--host", "0.0.0.0"]

@@ -1,29 +1,32 @@
 apiVersion: apps/v1
-kind: deployment
+kind: Deployment
 metadata:
-  name: app
+  name: app-py
+  namespace: application
   labels:
     app: app-py
 spec:
   replicas: 3
   selector:
-    matchLabels: app-py
+    matchLabels: 
+      app: app-py
   template:
     metadata:
       labels:
-        app: app-py
+          app: app-py
     spec:
       containers:
-      - name: app-py
-        image:
-        ports:
-        - containerPort: 80
-        volumeMounts:
-          - name: app-py
-            mountPath: /var/app-py
+        - name: app-py
+          image: matiasolivar/flask:v1.0
+          ports:
+          - containerPort: 80
+          volumeMounts:
+            - name: app-py
+              mountPath: /var/app-py
       volumes:
-        persistenVolueClaim:
-          claimName: app-pv
+      - name: app-py
+        persistentVolumeClaim:
+            claimName: app-py
       
 
 

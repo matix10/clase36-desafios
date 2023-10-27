@@ -28,16 +28,16 @@ jobs:
         - name: docker up
           uses: actions/checkout@v2
           with:
-            context: ${{ github.workspace }}/Desafio1/
+            context: ${{ github.workspace }}/Desafio2/
             run: docker-compose up -d
 
         - name: docker build
-          working-directory: ./Desafio1
+          working-directory: ./Desafio2
           run: docker-compose build image
           
 
         - name: push the image to docker
-          run: docker push matiasolivar/flask:v1.0 
+          run: docker push matiasolivar/flask-desafio2:v1.0 
 
 
      

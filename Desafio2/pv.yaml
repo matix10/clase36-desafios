@@ -3,7 +3,23 @@ kind: PersistentVolume
 metadata:
   name: app-py
 spec:
-  storageClassName: ""
+  capacity:
+     storage: 10Gi
+  volumeMode: Filesystem
+  accessModes: 
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-storage
   claimRef:
-    name: app-pv
+    name: app-py
     namespace: application
+  local:
+    path: /mnt/disks/ssd1
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - example-node

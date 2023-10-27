@@ -8,6 +8,6 @@ spec:
   - port: 80
     protocol: TCP
     targetPort: 80
-  sector:
+  selector:
     app: app-py
   type: NodePort

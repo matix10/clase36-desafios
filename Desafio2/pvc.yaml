@@ -4,5 +4,8 @@ metadata:
   name: app-py
   namespace: application
 spec:
-  storageClassName: ""
-  volumeName: app-pv
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi  # Asegúrate de cambiar esto según tus necesidades
