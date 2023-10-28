@@ -25,3 +25,15 @@
 
     pvc.yaml
     ![Alt text](image-2.png)
+
+    ns.yaml
+![Alt text](image-5.png)
+    deployment.yaml
+![Alt text](image-4.png)
+
+7. Exponemos el puerto del servicio en el puerto 5000
+    kubectl port-forward service/app-py-svc -n application 5000:5000
+8. Acceso a 127.0.0.1:5000
+![Alt text](image-3.png)
+
+Entonces se desplego un deployment en minikube, utilizando la pipeline creada en github actions para crear la imagen de la app.
